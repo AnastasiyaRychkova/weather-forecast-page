@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap');
+
+$main: #1A77F2;
+$white: white;
+$black: #2B3037;
+$background: #F9F9F9;
+$light-grey: #E8E8EA;
+$grey: #A5A3A9;
+
+$desktop-w: 1440px;
+$desktop-h: 850px;
+$mobile-w: 612px;
+
+$padding-v: 4em;
+$padding-h: 5em;
+
+
+html {
+	height: 100%;
+	overflow: hidden;
+	font-family: 'Nunito Sans', sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+body {
+	margin: 0;
+	height: 100%;
+	padding: 0;
+}
+
+#root {
+	display: flex;
+	margin: 0;
+	height: 100%;
+	padding: 0;
+	overflow: hidden;
+	font-size: 62.5%; // 10px
+}
+
+h1 {
+	margin: 0;
+	padding: 0;
+	font-size: 4em;
+}
+
+
+
+/*=============================================
+=            Left Side            =
+=============================================*/
+
+
+.today-weather {
+	position: relative;
+	min-width: 52em;
+	min-height: 100%;
+	padding: $padding-v $padding-h;
+	background-color: $main;
+	color: $background;
+}
+
+.city-overview {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 12.2em;
+	row-gap: 1em;
+
+	time {
+		line-height: 1.375em;
+		font-size: 2.4em;
+	}
+}
+
+.city-search {
+	$search-width: 34.5em;
+
+	position: absolute;
+	right: -$search-width - $padding-h;
+
+	& > input {
+		box-sizing: border-box;
+		width: $search-width / 1.4;
+		height: 3.7em;
+		padding: 0.57em 1.14em;
+		border: 1px solid $light-grey;
+		border-radius: 18px;
+		background: $white;
+		color: $main;
+		font-size: inherit;
+		font-size: 1.4em;
+		outline-color: $grey;
+	}
+}
+
+.today-forecast {
+	display: flex;
+	flex-direction: column;
+	row-gap: 15.2em;
+}
+
+.today-forecast_main {
+	display: flex;
+	align-items: center;
+	column-gap: 2.4em;
+	transform: translateX(-1em);
+}
+
+.today-forecast_img {
+
+	object, img {
+		width: 21em;
+		height: 22.4em;
+	}
+}
+
+.today-forecast_temperature {
+	display: flex;
+	flex-direction: column;
+	row-gap: 1em;
+}
+
+.today-forecast_temperature-value {
+	line-height: 1.35em;
+	font-size: 8em;
+	font-weight: 600;
+}
+
+.today-forecast_perceived-temperature {
+	line-height: 1.35em;
+	font-size: 2em;
+}
+
+ul.today-forecast_params {
+	display: grid;
+	padding: 0;
+	list-style-type: none;
+	grid-template-columns: 1fr auto;
+	row-gap: 3em;
+}
+
+li.today-forecast_parameter {
+	display: flex;
+	align-items: center;
+	column-gap: 1em;
+	max-width: 20em;
+	height: 4em;
+}
+
+.today-forecast-parameter-name {
+	width: min-content;
+	line-height: 1.39em;
+	word-wrap: break-word;
+	font-size: 1.8em;
+	font-weight: 400;
+}
+
+.today-forecast-parameter-value {
+	line-height: 1.35em;
+	font-size: 3em;
+	font-weight: 700;
+}
+
+
+
+/*=============================================
+=                Right Side                =
+=============================================*/
+
+.weekly-forecast {
+	$search-height: 5.2em;
+
+	box-sizing: border-box;
+	width: calc(100% - 62em);
+	padding: $padding-v $padding-h;
+	padding-right: 0;
+	background-color: $background;
+	color: $black;
+
+	h2 {
+		margin: 0;
+		margin-bottom: 1.25em;
+		padding: 0;
+		font-size: 2.4em;
+	}
+
+	& > section {
+		margin-top: 7em;
+	}
+
+	.weekly-forecast-overview {
+		margin-top: 7em + $search-height;
+	}
+}
+
+ul.weekly-forecast_week-list {
+	display: flex;
+	max-width: 100%;
+	padding: 0;
+	overflow-x: auto;
+	list-style: none;
+
+	&::-webkit-scrollbar
+	{
+		display: none;
+	}
+
+	.weather-card {
+		margin-right: 2.6em;
+	}
+}
+
+
+/*----------  Weather Card  ----------*/
+
+
+li.weather-card {
+	display: flex;
+	align-items: center;
+
+	flex-direction: column;
+	min-width: 10em;
+	padding: 2em 1.7em;
+	border: 1px solid $light-grey;
+	border-radius: 3.6em;
+	background-color: $white;
+	row-gap: 2em;
+}
+
+.weather-card_header {
+	display: flex;
+	align-items: center;
+	column-gap: 1em;
+}
+
+.weather-card_img {
+	position: relative;
+	width: 3.8em;
+	height: 3.8em;
+
+	object, img {
+		position: absolute;
+		top: -32%;
+		right: -21%;
+		width: 153%;
+		height: 163%;
+	}
+}
+
+.weather-card_day {
+	display: flex;
+	flex-direction: column;
+
+	span {
+		line-height: 1.35em;
+		font-size: 1.4em;
+	}
+}
+
+
+.weather-card_temperature {
+	display: flex;
+	align-items: center;
+	column-gap: 1em;
+}
+
+.weather-card_real_temperature {
+	line-height: 1.35em;
+	color: $main;
+	font-size: 3em;
+	font-weight: 700;
+}
+
+.weather-card_perceived-temperature {
+	display: flex;
+	flex-direction: column;
+	color: $grey;
+	font-weight: 600;
+}
+
+.weather-card_perceived-temperature-label {
+	line-height: 1.35em;
+	font-size: 1.2em;
+}
+
+.weather-card_perceived-temperature-value {
+	line-height: 1.35em;
+	font-size: 1.4em;
+}
+
+
+.weather-card_params {
+	display: flex;
+	column-gap: 1em;
+}
+
+.weather-card_parameter {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.weather-card_parameter-name {
+	color: $grey;
+	font-size: 1.4em;
+	font-weight: 600;
+}
+
+.weather-card_parameter-value {
+	font-size: 1.8em;
+}
+
+
+
+@media (max-width: $desktop-w), (max-height: $desktop-h) {
+	.weather-card {
+		min-width: 8em;
+
+		.weather-card_img {
+			width: 3em;
+			height: 3em;
+		}
+
+		.weather-card_day {
+			span {
+				font-size: 1.2em;
+			}
+		}
+
+		.weather-card_real_temperature {
+			font-size: 2.4em;
+		}
+
+		.weather-card_parameter-name {
+			font-size: 1.2em;
+		}
+
+		.weather-card_parameter-value {
+			font-size: 1.4em;
+		}
+
+	}
+}
+
+
+
+.weather-map-section {
+	padding-right: 5em;
+	height: calc(100% - 46.5em);
+}
+
+.weather-map {
+	width: 100%;
+	height: calc(100% - 6.3em);
+	border: 1px solid $light-grey;
+	border-radius: 1.8em;
+	background-color: $white;
+}
