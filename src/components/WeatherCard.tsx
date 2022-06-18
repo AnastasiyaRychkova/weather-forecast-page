@@ -1,37 +1,56 @@
 import React from 'react';
-import img from '../img/slight_touch_happyday.svg';
+import {
+	dateString,
+	dayString,
+	weekDayShortString,
+} from '../core//util';
+import WeatherImg from './WeatherImg';
+import type { WeatherCodeKeys } from '../core/WeatherCode';
+import type { DailyForecast } from '../core/types.d';
 
-const WeatherCard = () => {
+interface ICardProps {
+	weather: DailyForecast
+}
+
+const WeatherCard = ({
+	weather,
+}: ICardProps ) => {
 	return (
 		<li className="weather-card">
-			<div className="weather-card_header">
-				<div className="weather-card_img">
-					<object data={img} type="image/svg+xml"></object>
-				</div>
-				<div className="weather-card_day">
-					<span className="weather-card_weekday">ВТ</span>
-					<span className="weather-card_date">22 мая</span>
-				</div>
-			</div>
+			<time className="weather-card_header" dateTime={dateString( weather.time )}>
+				<span className="shortWeek">{weekDayShortString( weather.time )}</span>, {dayString( weather.time )}
+			</time>
 			<div className="weather-card_temperature">
-				<span className="weather-card_real_temperature">+14°</span>
-				<span className="weather-card_perceived-temperature">
-					<span className="weather-card_perceived-temperature-label">Ощущ.</span>
-					<span className="weather-card_perceived-temperature-value">+12°</span>
+				<span className="weather-card_real_temperature">
+					{weather.maxTemperature.asString()}
 				</span>
+				<div className="weather-card_img"
+					title={weather.weatherCode.asString()}>
+					<object
+						data={WeatherImg[ weather.weatherCode.value.toString() as unknown as WeatherCodeKeys ]}
+						type="image/svg+xml"
+						role="img"
+						aria-label={weather.weatherCode.asString()} />
+				</div>
 			</div>
 			<div className="weather-card_params">
 				<div className="weather-card_parameter">
-					<span className="weather-card_parameter-name">мин.</span>
-					<span className="weather-card_parameter-value">14°</span>
+					<span className="weather-card_parameter-name">мин</span>
+					<span className="weather-card_parameter-value">
+						{weather.minTemperature.asString()}
+					</span>
 				</div>
 				<div className="weather-card_parameter">
-					<span className="weather-card_parameter-name">макс.</span>
-					<span className="weather-card_parameter-value">14°</span>
+					<span className="weather-card_parameter-name">ощущ</span>
+					<span className="weather-card_parameter-value">
+						{weather.apparentTemperature.asString()}
+					</span>
 				</div>
 			</div>
 		</li>
 	);
 };
+
+
 
 export default WeatherCard;

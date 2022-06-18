@@ -36,8 +36,6 @@ class WeatherForecast
 			throw new Error( 'The object contains a weather forecast for less than 7 days' );
 			
 		const i = this._getCurrentTimePeriodIndex( response );
-		console.log( 'Period:', i );
-		console.log( 'Current Weather:', response );
 		return {
 			time: new Date( response.time[i] ),
 			weatherCode: WeatherParameters.weatherCode( response.weathercode[i] ),

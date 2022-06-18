@@ -15,7 +15,16 @@ class Temperature implements IWeatherParameter
 	
 	asString(): string
 	{
-		return this.value + '°';
+		return `${this._sign}${Math.round( this.value )}°`;
+	}
+
+	private get _sign(): string
+	{
+		return this.value > 0
+				? '+'
+				: this.value < 0
+					? '−'
+					: '';
 	}
 }
 
@@ -32,7 +41,7 @@ class Precipitation implements IWeatherParameter
 	}
 
 	asString(): string {
-		return this.value + 'мм';
+		return Math.round( this.value ) + ' мм';
 	}
 }
 
@@ -53,13 +62,13 @@ class Wind implements IWeatherParameter
 	asString(): string
 	{
 		return this._direction
-				? this.value + 'м/с, ' + this._angleToHorizonSide( this._direction )
-				: this.value + 'м/с,';
+				? Math.round( this.value ) + ' м/с, ' + this._angleToHorizonSide( this._direction )
+				: Math.round( this.value ) + ' м/с,';
 	}
 
 	private _angleToHorizonSide( angle: number ): string
 	{
-		const directions = [ 'С', 'СЗ', 'З', 'ЮЗ', 'Ю', 'ЮВ', 'В', 'СВ' ];
+		const directions = [ 'С', 'СВ', 'В', 'ЮВ', 'Ю', 'ЮЗ', 'З', 'СЗ' ];
 		return directions[ Math.floor( ( angle + 22.5 ) % 360 / 45 ) ];
 	}
 }
@@ -108,7 +117,7 @@ class Pressure implements IWeatherParameter
 	}
 
 	asString(): string {
-		return this.value + 'мм рт ст';
+		return Math.round( this.value ) + ' мм рт. ст.';
 	}
 }
 
@@ -127,7 +136,7 @@ class WeatherParameter implements IWeatherParameter
 	}
 
 	asString(): string {
-		return this.value + this._units;
+		return Math.round( this.value ) + this._units;
 	}
 }
 

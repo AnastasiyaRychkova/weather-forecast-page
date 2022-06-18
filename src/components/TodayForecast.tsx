@@ -1,44 +1,52 @@
-import React, {FC} from 'react';
-import img from '../img/partly_cloudy.svg';
+import React from 'react';
+import WeatherImg from './WeatherImg';
+import type { WeatherCodeKeys } from '../core/WeatherCode';
+import type { CurrentWeather } from '../core/types.d';
+
 
 interface IProps {
-	className?: string,
+	weather: CurrentWeather | null,
 }
 
-const TodayForecast: FC<IProps> = ({
-	
-}) => {
-	return (
+const TodayForecast = ({
+	weather,
+}: IProps) => {
+	return weather && (
 		<section className="today-forecast">
 			<div className="today-forecast_main">
-				<div className="today-forecast_img">
-					<object data={img} type="image/svg+xml" role="img" title="Облачно с прояснениями"></object>
+				<div className="today-forecast_img"
+					title={weather.weatherCode.asString()}>
+					<object
+						data={WeatherImg[ weather.weatherCode.value.toString() as unknown as WeatherCodeKeys ]}
+						type="image/svg+xml"
+						role="img"
+						aria-label={weather.weatherCode.asString()} />
 				</div>
 				<div className="today-forecast_temperature">
-					<span className="today-forecast_temperature-value">14°</span>
-					<span className="today-forecast_perceived-temperature">Ощущается +17°</span>
+					<span className="today-forecast_temperature-value">{weather.temperature.asString()}</span>
+					<span className="today-forecast_perceived-temperature">Ощущается {weather.apparentTemperature.asString()}</span>
 				</div>
 			</div>
 			<ul className="today-forecast_params">
 				<li className="today-forecast_parameter">
-					<span className="today-forecast-parameter-name">Вероятность осадков</span>
-					<span className="today-forecast-parameter-value">14%</span>
+					<span className="today-forecast-parameter-name">Ветер</span>
+					<span className="today-forecast-parameter-value">{weather.wind.asString()}</span>
+				</li>
+				<li className="today-forecast_parameter">
+					<span className="today-forecast-parameter-name">Порывы ветра</span>
+					<span className="today-forecast-parameter-value">{weather.windGusts.asString()}</span>
 				</li>
 				<li className="today-forecast_parameter">
 					<span className="today-forecast-parameter-name">Влажность</span>
-					<span className="today-forecast-parameter-value">38%</span>
-				</li>
-				<li className="today-forecast_parameter">
-					<span className="today-forecast-parameter-name">Давление</span>
-					<span className="today-forecast-parameter-value">767мм</span>
+					<span className="today-forecast-parameter-value">{weather.humidity.asString()}</span>
 				</li>
 				<li className="today-forecast_parameter">
 					<span className="today-forecast-parameter-name">Осадки</span>
-					<span className="today-forecast-parameter-value">0 мм</span>
+					<span className="today-forecast-parameter-value">{weather.precipitation.asString()}</span>
 				</li>
-				<li className="today-forecast_parameter">
-					<span className="today-forecast-parameter-name">Ветер</span>
-					<span className="today-forecast-parameter-value">2 м/с, ЮЗ</span>
+				<li className="today-forecast_parameter ">
+					<span className="today-forecast-parameter-name">Давление</span>
+					<span className="today-forecast-parameter-value">{weather.pressure.asString()}</span>
 				</li>
 			</ul>
 		</section>

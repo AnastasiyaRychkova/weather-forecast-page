@@ -1,28 +1,50 @@
-import React, {FC} from 'react';
+import React, { useEffect, useState } from 'react';
+import {
+	timeSting,
+	dateString,
+	dayString,
+	weekDayString,
+} from '../core//util';
 
 interface IProps {
 	city: string,
-	className?: string,
 }
 
-const CityOverview: FC<IProps> = ({
+const TIME_UPDATE_DELAY = 1000;
+
+const CityOverview = ({
 	city,
-}) => {
+}: IProps) => {
+	const now = new Date();
+	const [time, setTime] = useState( timeSting( now ) );
+	useEffect(() => {
+		const timer = setInterval( () => {
+			setTime( timeSting( new Date() ) );
+		},
+		TIME_UPDATE_DELAY );
+		return () => {
+			clearTimeout( timer );
+		}
+	}, [] );
+
 	return (
 		<div className="city-overview">
 			<h1 className="city">{city}</h1>
 			<time
 				className="date"
-				dateTime="2022-05-24">
-				Сегодня, понедельник, 24 мая
+				dateTime={dateString( now )}>
+				Сегодня, {weekDayString( now )}, {dayString( now )}
 			</time>
 			<time
 				className="time"
-				dateTime="12:32">
-				12:32
+				dateTime={time}>
+				{time}
 			</time>
 		</div>
 	);
 };
+
+
+
 
 export default CityOverview;
