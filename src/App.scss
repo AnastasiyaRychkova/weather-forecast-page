@@ -343,9 +343,13 @@ li.today-forecast_parameter {
 	}
 }
 
+
+/*----------  Vertical Mobile Layout  ----------*/
+
 @media (max-width: $mobile) {
 	div.today-weather {
 		width: calc( 100% - 4em );
+		min-width: stretch;
 		min-height: 67em;
 
 		ul.today-forecast_params {
@@ -363,12 +367,14 @@ li.today-forecast_parameter {
 	}
 
 	div.weekly-forecast {
-		position: absolute;
-		top: min(66em, calc(100% - 10em));
+		position: fixed;
+		top: 66em;
 		width: 100%;
 		height: calc(100% - 24em);
+		min-height: unset;
 		border-top-left-radius: 18px;
 		border-top-right-radius: 18px;
+		transition: transform ease-out .3s;
 
 		&::before {
 			position: absolute;
@@ -379,6 +385,18 @@ li.today-forecast_parameter {
 			border-radius: 2.5px;
 			background-color: $light-grey;
 			content: "";
+		}
+
+		&[data-open=false] {
+			transform: translateY(0px);
+		}
+
+		&[data-open=true] {
+			transform: translateY(-42em);
+		}
+
+		&[data-open=true]::after {
+			display: none;
 		}
 
 		.weekly-forecast-overview {

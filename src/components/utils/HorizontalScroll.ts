@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 
-export function useHorizontalScroll<T extends HTMLElement>() {
+function useHorizontalScroll<T extends HTMLElement>() {
 	const scrolledElemRef = useRef<T>( null );
 
 	useEffect( () => {
@@ -21,9 +21,9 @@ export function useHorizontalScroll<T extends HTMLElement>() {
 		return () => {
 			scrolledElem.removeEventListener( "wheel", onWheel );
 		};
-	}, [] );
+	} );
 
 	return scrolledElemRef;
 }
 
-
+export default useHorizontalScroll;

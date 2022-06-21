@@ -7,10 +7,14 @@ import WeeklyForecast from './components/WeeklyForecast';
 import WeatherMap from './components/WeatherMap';
 import WeatherForecastService from './core/WeatherForecastService';
 import WeatherForecast from './core/WeatherForecast';
+import { useVerticalOpening } from './components/utils';
+
+const WINDOW_THRESHOLD = 22;
 
 function App() {
 	const firstRenderRef = useRef( true );
 	const [forecast, setForecast] = useState<WeatherForecast|null>( null );
+	const windowRef = useVerticalOpening<HTMLDivElement>( WINDOW_THRESHOLD );
 
 	useEffect(() => {
 		if( firstRenderRef.current )
@@ -39,9 +43,9 @@ function App() {
 				<CitySearch />
 				<CityOverview city='Санкт-Петербург' />
 			</header>
-			<TodayForecast  weather={forecast && forecast.currentWeather}/>
+			<TodayForecast weather={forecast && forecast.currentWeather}/>
 		</div>
-		<div className="weekly-forecast">
+		<div className="weekly-forecast" ref={windowRef} data-open="false">
 			<WeeklyForecast
 				city='Санкт-Петербург'
 				forecast={forecast && forecast.weeklyForecast}
