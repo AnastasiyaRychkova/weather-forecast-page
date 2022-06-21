@@ -23,14 +23,14 @@ function App() {
 				latitude: 59.94,
 				longitude: 30.31,
 			})
-				.then(
-					( weatherForecast: WeatherForecast ) => {
-						setForecast( weatherForecast );
-					},
-					( reason ) => {
-						alert( 'Failed to load forecast. Reason: ' + reason );
-					}
-				);
+			.then(
+				( weatherForecast: WeatherForecast ) => {
+					setForecast( weatherForecast );
+				},
+				( reason ) => {
+					alert( 'Failed to load forecast. Reason: ' + reason );
+				}
+			);
 			firstRenderRef.current = false;
 			return;
 		}
