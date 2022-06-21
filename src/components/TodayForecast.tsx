@@ -1,7 +1,6 @@
 import React from 'react';
 import WeatherImg from './WeatherImg';
-import type { WeatherCodeKeys } from '../core/WeatherCode';
-import type { CurrentWeather } from '../core/types.d';
+import type { CurrentWeather, WeatherCodeKeys } from '../core';
 
 
 interface IProps {

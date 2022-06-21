@@ -1,17 +1,18 @@
+import WeatherParameters from './WeatherParameter';
 import type {
 	ForecastResponse,
 	HourlyForecastResponse,
 	CurrentWeather,
 	DailyForecast,
 	DailyForecastResponse,
+	IWeatherForecast,
 } from './types.d';
-import WeatherParameters from './WeatherParameter';
 
 
 /**
  * Прогноз погоды
  */
-class WeatherForecast
+class WeatherForecast implements IWeatherForecast
 {
 	/** Погода последнего часа */
 	readonly currentWeather: CurrentWeather;

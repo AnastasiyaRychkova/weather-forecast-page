@@ -1,13 +1,7 @@
-import React, {FC} from 'react';
+import React from 'react';
 
-interface IProps {
-	
-	className?: string,
-}
 
-const CitySearch: FC<IProps> = ({
-	
-}) => {
+const CitySearch = () => {
 	return (
 		<div className="city-search">
 			<input

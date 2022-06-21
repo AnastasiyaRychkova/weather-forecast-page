@@ -5,15 +5,17 @@ import CityOverview from './components/CityOverview';
 import TodayForecast from './components/TodayForecast';
 import WeeklyForecast from './components/WeeklyForecast';
 import WeatherMap from './components/WeatherMap';
-import WeatherForecastService from './core/WeatherForecastService';
-import WeatherForecast from './core/WeatherForecast';
+
+import { WeatherForecastService } from './core';
 import { useVerticalOpening } from './components/utils';
+import type { IWeatherForecast } from './core';
+
 
 const WINDOW_THRESHOLD = 22;
 
 function App() {
 	const firstRenderRef = useRef( true );
-	const [forecast, setForecast] = useState<WeatherForecast|null>( null );
+	const [forecast, setForecast] = useState<IWeatherForecast|null>( null );
 	const windowRef = useVerticalOpening<HTMLDivElement>( WINDOW_THRESHOLD );
 
 	useEffect(() => {
@@ -24,7 +26,7 @@ function App() {
 				longitude: 30.31,
 			})
 			.then(
-				( weatherForecast: WeatherForecast ) => {
+				( weatherForecast: IWeatherForecast ) => {
 					setForecast( weatherForecast );
 				},
 				( reason ) => {

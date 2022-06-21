@@ -1,4 +1,4 @@
-import type { WeatherCodeKeys } from '../core/WeatherCode';
+import type { WeatherCodeKeys } from '../core';
 import sun from '../img/slight_touch_happyday.svg';
 import partlyCloudy from '../img/partly_cloudy.svg';
 import cloudy from '../img/cloudy.svg';

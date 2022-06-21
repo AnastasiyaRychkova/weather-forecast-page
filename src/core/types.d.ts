@@ -129,3 +129,12 @@ export type CityType = {
 
 
 export type WeatherRequestOptions = CityType;
+
+export interface IWeatherForecast
+{
+	/** Погода последнего часа */
+	readonly currentWeather: CurrentWeather;
+
+	/** Прогноз погоды на неделю */
+	readonly weeklyForecast: DailyForecast[];
+}

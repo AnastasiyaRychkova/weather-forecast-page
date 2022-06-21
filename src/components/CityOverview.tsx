@@ -3,7 +3,7 @@ import {
 	dateString,
 	dayString,
 	weekDayString,
-} from '../core/util';
+} from '../core';
 import Time from './Time';
 
 interface IProps {

@@ -3,10 +3,9 @@ import {
 	dateString,
 	dayString,
 	weekDayShortString,
-} from '../core//util';
+} from '../core';
 import WeatherImg from './WeatherImg';
-import type { WeatherCodeKeys } from '../core/WeatherCode';
-import type { DailyForecast } from '../core/types.d';
+import type { DailyForecast, WeatherCodeKeys } from '../core';
 
 interface ICardProps {
 	weather: DailyForecast

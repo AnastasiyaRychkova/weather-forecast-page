@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { timeSting } from '../core/util';
+import { timeSting } from '../core';
 
 const TIME_UPDATE_DELAY = 1000;
 
