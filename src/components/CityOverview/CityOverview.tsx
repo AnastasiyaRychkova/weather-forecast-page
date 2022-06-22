@@ -3,16 +3,16 @@ import {
 	dateString,
 	dayString,
 	weekDayString,
-} from '../core';
-import Time from './Time';
+} from '../../core';
+import Clock from '../Clock';
 
-interface IProps {
+interface ICityOverviewProps {
 	city: string,
 }
 
 const CityOverview = ({
 	city,
-}: IProps) => {
+}: ICityOverviewProps) => {
 	const now = new Date();
 	
 	return (
@@ -23,7 +23,7 @@ const CityOverview = ({
 				dateTime={dateString( now )}>
 				Сегодня, {weekDayString( now )}, {dayString( now )}
 			</time>
-			<Time />
+			<Clock />
 		</div>
 	);
 };

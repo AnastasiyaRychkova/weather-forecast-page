@@ -1,9 +1,9 @@
 import React from 'react';
-import { useHorizontalScroll } from './utils';
-import WeatherCard from './WeatherCard';
-import type { DailyForecast } from '../core';
+import { useHorizontalScroll } from '../utils';
+import WeatherCard from '../WeatherCard';
+import type { DailyForecast } from '../../core';
 
-interface IProps {
+export interface IWeeklyForecastProps {
 	city: string,
 	forecast: DailyForecast[] | null,
 }
@@ -11,7 +11,7 @@ interface IProps {
 const WeeklyForecast = ({
 	city,
 	forecast,
-}: IProps ) => {
+}: IWeeklyForecastProps ) => {
 	const ref = useHorizontalScroll<HTMLUListElement>();
 	return forecast && (
 		<section className="weekly-forecast-overview">

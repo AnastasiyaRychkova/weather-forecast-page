@@ -1,9 +1,12 @@
 import React from 'react';
 
+interface IProps {
+	className?: string,
+}
 
-const CitySearch = () => {
+const CitySearch = ({ className }:IProps) => {
 	return (
-		<div className="city-search">
+		<div className={className || ''}>
 			<input
 				className="search-input"
 				type="search"

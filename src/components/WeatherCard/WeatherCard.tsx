@@ -3,11 +3,14 @@ import {
 	dateString,
 	dayString,
 	weekDayShortString,
-} from '../core';
-import WeatherImg from './WeatherImg';
-import type { DailyForecast, WeatherCodeKeys } from '../core';
+} from '../../core';
+import WeatherImg from '../WeatherImg';
+import type { DailyForecast, WeatherCodeKeys } from '../../core';
 
-interface ICardProps {
+export interface ICardProps {
+	/**
+	 * Прогноз погоды на день
+	 */
 	weather: DailyForecast
 }
 

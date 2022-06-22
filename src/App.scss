@@ -16,11 +16,13 @@ $padding-v: 4em;
 $padding-h: 5em;
 
 $search-height: 5.2em;
+$search-width: 34.5em;
 
 
 html {
 	height: 100%;
 	overflow: hidden;
+	font-size: 62.5%; // 10px
 }
 
 body {
@@ -35,7 +37,6 @@ body {
 	height: 100%;
 	padding: 0;
 	overflow: hidden;
-	font-size: 62.5%; // 10px
 
 
 	@media (max-height: $mobile) {
@@ -73,13 +74,6 @@ img, object {
 		background-color: $white;
 		color: $main;
 	}
-
-	h1 {
-		margin: 0;
-		padding: 0;
-		transition: font-size $transition-animation;
-		font-size: 4em;
-	}
 }
 
 .city-overview {
@@ -89,6 +83,13 @@ img, object {
 	transition: margin-bottom $transition-animation;
 	row-gap: 1em;
 
+	h1.city {
+		margin: 0;
+		padding: 0;
+		transition: font-size $transition-animation;
+		font-size: 4em;
+	}
+
 	time {
 		transition: font-size $transition-animation;
 		line-height: 1.375em;
@@ -96,26 +97,31 @@ img, object {
 	}
 }
 
+.time {
+	transition: font-size $transition-animation;
+	line-height: 1.375em;
+	font-size: 2.4em;
+}
+
 .city-search {
-	$search-width: 34.5em;
 
 	position: absolute;
 	right: -$search-width - $padding-h;
 	transition: right $transition-animation;
+}
 
-	& > input {
-		box-sizing: border-box;
-		width: calc($search-width / 1.4);
-		height: 3.7em;
-		padding: 0.57em 1.14em;
-		outline-color: $grey;
-		border: 1px solid $light-grey;
-		border-radius: 18px;
-		background: $white;
-		color: $main;
-		font-size: inherit;
-		font-size: 1.4em;
-	}
+input.search-input {
+	box-sizing: border-box;
+	width: calc($search-width / 1.4);
+	height: 3.7em;
+	padding: 0.57em 1.14em;
+	outline-color: $grey;
+	border: 1px solid $light-grey;
+	border-radius: 18px;
+	background: $white;
+	color: $main;
+	font-size: inherit;
+	font-size: 1.4em;
 }
 
 .today-forecast {
@@ -210,10 +216,6 @@ li.today-forecast_parameter {
 	.today-weather {
 		min-width: 42em;
 		padding: $padding-v $padding-h;
-
-		h1 {
-			font-size: 3em;
-		}
 	}
 
 	.city-search {
@@ -224,6 +226,11 @@ li.today-forecast_parameter {
 
 	.city-overview {
 		margin-bottom: 2.7em;
+
+		
+		h1 {
+			font-size: 3em;
+		}
 
 		time {
 			font-size: 2em;
@@ -282,10 +289,6 @@ li.today-forecast_parameter {
 	.today-weather {
 		min-width: 35em;
 		padding: $padding-v $padding-h;
-
-		h1 {
-			font-size: 2em;
-		}
 	}
 
 	.city-search {
@@ -296,6 +299,10 @@ li.today-forecast_parameter {
 
 	.city-overview {
 		margin-bottom: 1em;
+
+		h1 {
+			font-size: 2em;
+		}
 
 		time {
 			font-size: 1.8em;

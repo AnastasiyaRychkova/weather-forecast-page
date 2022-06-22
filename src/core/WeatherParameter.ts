@@ -15,7 +15,7 @@ class Temperature implements IWeatherParameter
 	
 	asString(): string
 	{
-		return `${this._sign}${Math.round( this.value )}°`;
+		return `${this._sign}${Math.abs(Math.round( this.value ))}°`;
 	}
 
 	private get _sign(): string

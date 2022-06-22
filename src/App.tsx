@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import './App.scss';
 import CitySearch from './components/CitySearch';
 import CityOverview from './components/CityOverview';
-import TodayForecast from './components/TodayForecast';
-import WeeklyForecast from './components/WeeklyForecast';
+import TodayForecast from './components/TodayForecast/TodayForecast';
+import WeeklyForecast from './components/WeeklyForecast/WeeklyForecast';
 import WeatherMap from './components/WeatherMap';
 
 import { WeatherForecastService } from './core';

@@ -1,15 +1,15 @@
 import React from 'react';
-import WeatherImg from './WeatherImg';
-import type { CurrentWeather, WeatherCodeKeys } from '../core';
+import WeatherImg from '../WeatherImg';
+import type { CurrentWeather, WeatherCodeKeys } from '../../core';
 
 
-interface IProps {
+export interface ITodayForecastProps {
 	weather: CurrentWeather | null,
 }
 
 const TodayForecast = ({
 	weather,
-}: IProps) => {
+}: ITodayForecastProps) => {
 	return weather && (
 		<section className="today-forecast">
 			<div className="today-forecast_main">

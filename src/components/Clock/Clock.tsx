@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { timeSting } from '../core';
+import { timeSting } from '../../core';
 
 const TIME_UPDATE_DELAY = 1000;
 
-const Time = () => {
+const Clock = () => {
 	const now = new Date();
 	const [time, setTime] = useState( timeSting( now ) );
 	useEffect(() => {
@@ -24,4 +24,4 @@ const Time = () => {
 	);
 };
 
-export default Time;
+export default Clock;
