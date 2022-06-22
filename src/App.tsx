@@ -42,7 +42,7 @@ function App() {
 		<>
 		<div className="today-weather">
 			<header className="today-weather_header">
-				<CitySearch />
+				<CitySearch className='city-search' />
 				<CityOverview city='Санкт-Петербург' />
 			</header>
 			<TodayForecast weather={forecast && forecast.currentWeather}/>

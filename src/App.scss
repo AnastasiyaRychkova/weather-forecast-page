@@ -83,18 +83,18 @@ img, object {
 	transition: margin-bottom $transition-animation;
 	row-gap: 1em;
 
-	h1.city {
-		margin: 0;
-		padding: 0;
-		transition: font-size $transition-animation;
-		font-size: 4em;
-	}
-
 	time {
 		transition: font-size $transition-animation;
 		line-height: 1.375em;
 		font-size: 2.4em;
 	}
+}
+
+h1.city {
+	margin: 0;
+	padding: 0;
+	transition: font-size $transition-animation;
+	font-size: 4em;
 }
 
 .time {
@@ -227,14 +227,13 @@ li.today-forecast_parameter {
 	.city-overview {
 		margin-bottom: 2.7em;
 
-		
-		h1 {
-			font-size: 3em;
-		}
-
 		time {
 			font-size: 2em;
 		}
+	}
+
+	h1.city {
+		font-size: 3em;
 	}
 
 	.today-forecast {
@@ -300,13 +299,13 @@ li.today-forecast_parameter {
 	.city-overview {
 		margin-bottom: 1em;
 
-		h1 {
-			font-size: 2em;
-		}
-
 		time {
 			font-size: 1.8em;
 		}
+	}
+
+	h1.city {
+		font-size: 2em;
 	}
 
 	.today-forecast {
