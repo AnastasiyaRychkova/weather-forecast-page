@@ -1,4 +1,5 @@
 import React from 'react';
+import { cityIn } from 'lvovich';
 import { useHorizontalScroll } from '../utils';
 import WeatherCard from '../WeatherCard';
 import type { DailyForecast } from '../../core';
@@ -15,7 +16,7 @@ const WeeklyForecast = ({
 	const ref = useHorizontalScroll<HTMLUListElement>();
 	return forecast && (
 		<section className="weekly-forecast-overview">
-			<h2>{'Погода на неделю в городе '+city}</h2>
+			<h2>{'Погода на неделю в '+cityIn( city )}</h2>
 			<ul className="weekly-forecast_week-list" ref={ref}>
 			{
 				forecast.map(
